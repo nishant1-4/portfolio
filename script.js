@@ -27,11 +27,10 @@ let inputId = prompt("Enter the userId: ");
 function displayOrder(userid, products) {
   let productList = [];
   let totalprice = [];
-  products.forEach((productid) =>{
-    productList.push(items.filter((item) => item.id === productid)[0].itemName)
-    totalprice.push(items.filter(item=>item.id===productid)[0].cost)
-  }
-  );
+  products.forEach((productid) => {
+    productList.push(items.filter((item) => item.id === productid)[0].itemName);
+    totalprice.push(items.filter((item) => item.id === productid)[0].cost);
+  });
   console.log(`
 username: ${users.filter((user) => user.userId === parseInt(userid))[0].userName}
 userid:${userid}
@@ -41,8 +40,10 @@ totalprice:${totalprice.reduce((a, b) => a + b, 0)}
 }
 
 function checkOrders(orderId, orders) {
-  let order = orders.filter(order=>order.userId===parseInt(orderId))
-  order.length>0?displayOrder(orderId,order[0].products):console.log("Not found")
+  let order = orders.filter((order) => order.userId === parseInt(orderId));
+  order.length > 0
+    ? displayOrder(orderId, order[0].products)
+    : console.log("Not found");
 }
 checkOrders(inputId, orders);
 // console.log(orders.filter(order=>order.userId===1000))
